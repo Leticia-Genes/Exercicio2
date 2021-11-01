@@ -1,5 +1,5 @@
 interface Pessoa {
-	id: number;
+    id: number;
     name: string;
     bio: string;
 }
