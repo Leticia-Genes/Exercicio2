@@ -1,14 +1,14 @@
 //percorre a lista até encontrar a pessoa dona do id
 //se encontrar, retorna sua bio, caso contrário, retorna mensagem de erro
 function retornaBioImperativo(id) {
-    var bio;
+    var bio = '';
     for (var i = 0; i < lista.length; i++) {
         if (lista[i].id == id) {
             bio = lista[i].bio;
             break;
         }
     }
-    if (bio == null)
+    if (!bio)
         bio = 'Id inválido';
     return bio;
 }
@@ -21,14 +21,14 @@ function retornaBioFuncional(id) {
 //percorre a lista até encontrar a pessoa dona do id
 //se encontrar, retorna seu nome, caso contrário, retorna mensagem de erro
 function retornaNameImperativo(id) {
-    var nome;
+    var nome = '';
     for (var i = 0; i < lista.length; i++) {
         if (lista[i].id == id) {
             nome = lista[i].name;
             break;
         }
     }
-    if (nome == null)
+    if (!nome)
         nome = 'Id inválido';
     return nome;
 }
@@ -63,7 +63,7 @@ function apagaItemFuncional(id) {
 function alteraImperativo(id, tipo, novo) {
     for (var i = 0; i < lista.length; i++) {
         if (lista[i].id == id) {
-            if (tipo == 1) {
+            if (tipo === 1) {
                 lista[i].name = novo;
             }
             else {
@@ -78,7 +78,7 @@ function alteraImperativo(id, tipo, novo) {
 //mostra uma mensagem de erro caso não encontre correspondência
 function alteraFuncional(id, tipo, novo) {
     if (!lista.some(function (pessoa, i) {
-        return pessoa.id == id ? (tipo == 1 ? lista[i].name = novo : lista[i].bio = novo) : false;
+        return pessoa.id == id ? (tipo === 1 ? lista[i].name = novo : lista[i].bio = novo) : false;
     })) {
         console.log('Id inválido');
     }

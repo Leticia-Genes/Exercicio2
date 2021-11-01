@@ -7,14 +7,14 @@ interface Pessoa {
 //percorre a lista até encontrar a pessoa dona do id
 //se encontrar, retorna sua bio, caso contrário, retorna mensagem de erro
 function retornaBioImperativo(id: number) : string {
-    let bio;
+    let bio: string = '';
     for(let i=0; i<lista.length; i++) {
         if(lista[i].id == id) {
             bio = lista[i].bio;
             break;
         }
     }
-    if(bio == null)
+    if(!bio)
         bio = 'Id inválido';
 
     return bio;
@@ -23,7 +23,7 @@ function retornaBioImperativo(id: number) : string {
 //filtra na lista a pessoa correspondente ao id
 //retorna sua bio, ou uma mensagem de erro caso não encontre correspondência
 function retornaBioFuncional(id: number) : string {
-    let filtro = lista.filter(function(item) {return item.id == id})
+    let filtro: Array<Pessoa> = lista.filter(function(item) {return item.id == id})
 
     return filtro.length == 0 ? 'Id inválido' : filtro[0].bio;
 }
@@ -31,14 +31,14 @@ function retornaBioFuncional(id: number) : string {
 //percorre a lista até encontrar a pessoa dona do id
 //se encontrar, retorna seu nome, caso contrário, retorna mensagem de erro
 function retornaNameImperativo(id: number) : string {
-    let nome;
+    let nome: string = '';
     for(let i=0; i<lista.length; i++) {
         if(lista[i].id == id) {
             nome = lista[i].name;
             break;
         }
     }
-    if(nome == null)
+    if(!nome)
         nome = 'Id inválido';
 
     return nome;
@@ -47,7 +47,7 @@ function retornaNameImperativo(id: number) : string {
 //filtra na lista a pessoa correspondente ao id
 //retorna seu nome, ou uma mensagem de erro caso não encontre correspondência
 function retornaNameFuncional(id: number) : string {
-    let filtro = lista.filter(function(item) {return item.id == id})
+    let filtro: Array<Pessoa> = lista.filter(function(item) {return item.id == id})
 
     return filtro.length == 0 ? 'Id inválido' : filtro[0].name;
 }
@@ -79,7 +79,7 @@ function apagaItemFuncional(id: number) {
 function alteraImperativo(id: number, tipo: number, novo: string) {
     for(let i=0; i<lista.length; i++) {
         if(lista[i].id == id) {
-            if(tipo == 1) {
+            if(tipo === 1) {
                 lista[i].name = novo;
             } else {
                 lista[i].bio = novo;
@@ -94,7 +94,7 @@ function alteraImperativo(id: number, tipo: number, novo: string) {
 //mostra uma mensagem de erro caso não encontre correspondência
 function alteraFuncional(id: number, tipo: number, novo: string) {
     if(!lista.some(function(pessoa, i) {
-        return pessoa.id == id ? (tipo == 1 ? lista[i].name = novo : lista[i].bio = novo) : false
+        return pessoa.id == id ? (tipo === 1 ? lista[i].name = novo : lista[i].bio = novo) : false
     })) {
         console.log('Id inválido');
     }
